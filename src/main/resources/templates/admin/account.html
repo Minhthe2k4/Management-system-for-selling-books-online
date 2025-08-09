@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<title>Admin/Category</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="/assetsquantri/img/logo1.png" rel="icon">
+<link href="/assetsquantri/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link href="https://fonts.gstatic.com" rel="preconnect">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="/assetsquantri/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assetsquantri/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="/assetsquantri/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="/assetsquantri/vendor/quill/quill.snow.css" rel="stylesheet">
+<link href="/assetsquantri/vendor/quill/quill.bubble.css" rel="stylesheet">
+<link href="/assetsquantri/vendor/remixicon/remixicon.css" rel="stylesheet">
+<link href="/assetsquantri/vendor/simple-datatables/style.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Template Main CSS File -->
+<link href="/assetsquantri/css/style.css" rel="stylesheet">
+
+<style>
+    /* Đảm bảo bảng có thể cuộn ngang */
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    /* Giảm kích thước font chữ trên màn hình nhỏ */
+    @media (max-width: 768px) {
+        .table th, .table td {
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        /* Ẩn các cột ít quan trọng */
+        .table th:nth-child(3), .table td:nth-child(3),
+        .table th:nth-child(6), .table td:nth-child(6),
+        .table th:nth-child(7), .table td:nth-child(7) {
+            display: none;
+        }
+    }
+
+    /* Chỉnh nút hành động cho điện thoại */
+    @media (max-width: 576px) {
+        .table th, .table td {
+            font-size: 10px;
+        }
+        .btn {
+            font-size: 10px;
+            padding: 3px 6px;
+        }
+    }
+
+
+
+
+</style>
+</head>
+
+<body>
+
+	<!-- ======= Header ======= -->
+	<header id="header" class="header fixed-top d-flex align-items-center">
+
+		<div class="d-flex align-items-center justify-content-between">
+			<a href="/Bieudodoanhthu" class="logo d-flex align-items-center">
+				<img src="/assetsquantri/img/logo1.png" alt="">
+				<span class="d-none d-lg-block">Admin</span>
+			</a>
+		</div>
+		<!-- End Logo -->
+
+		<nav class="header-nav ms-auto">
+			<ul class="d-flex align-items-center">
+				<li class="nav-item dropdown pe-3">
+					<a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+						<i class="bi bi-person-circle"></i>
+						<span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
+					</a>
+
+					<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+						<li class="dropdown-header">
+							<h6>admin</h6>
+							<span>Quản trị viên</span>
+						</li>
+						
+						<li>
+							<hr class="dropdown-divider">
+						</li>
+
+						<li>
+							<a class="dropdown-item d-flex align-items-center" href="Thongtincanhan.html">
+								<i class="bi bi-person"></i>
+								<span>Thông tin cá nhân</span>
+							</a>
+						</li>
+						<li>
+							<hr class="dropdown-divider">
+						</li>
+						<li>
+							<a class="dropdown-item d-flex align-items-center" th:href="@{/logout}">
+								<i class="bi bi-box-arrow-right"></i>
+								<span>Đăng xuất</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<!-- End Icons Navigation -->
+	</header>
+	<!-- End Header -->
+
+	<!-- ======= Sidebar ======= -->
+	<aside id="sidebar" class="sidebar">
+		<ul class="sidebar-nav" id="sidebar-nav">
+			<li class="nav-heading"><strong>Tổng quan dữ liệu</strong></li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{'/admin/bieudo'}">
+					<i class="fas fa-tachometer-alt"></i> <span>Biểu đồ thống kê</span>
+				</a>
+			</li>
+			<li class="nav-heading"><strong>Quản lý bán hàng</strong></li>
+			<li class="nav-item">
+				<a class="nav-link collapsed" th:href="@{'/admin/category'}">
+					<i class="bi bi-layout-text-window-reverse"></i> <span>Danh mục</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link collapsed" th:href="@{'/admin/Donhangquantri'}">
+					<i class="bi bi-cart"></i> <span>Đơn hàng</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link collapsed" th:href="@{'/admin/productquantri'}">
+					<i class="bi bi-grid"></i> <span>Sản phẩm</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link collapsed" th:href="@{'/admin/Quanlidanhgia'}">
+					<i class="fa fa-star"></i><span>Đánh giá</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link collapsed" th:href="@{'/admin/Quantrikhuyenmai'}">
+					<i class="fas fa-gift"></i> <span>Khuyến mãi</span>
+				</a>
+			</li>
+			<li class="nav-heading"><strong>Quản lý tài khoản</strong></li>
+			<li class="nav-item">
+				<a class="nav-link collapsed" th:href="@{'/admin/account'}">
+					<i class="bi bi-person"></i> <span>Tài khoản</span>
+				</a>
+			</li>
+		</ul>
+	</aside>
+	<!-- End Sidebar-->
+
+	<main id="main" class="main">
+		<div class="pagetitle">
+			<h1>Tài khoản</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="index.html">Quản lý tài khoản</a></li>
+					<li class="breadcrumb-item active">Tài khoản</li>
+				</ol>
+			</nav>
+		</div>
+		<!-- End Page Title -->
+
+		<section class="section">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="table-responsive">
+							<table class="table datatable col-lg-8">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Tên tài khoản</th>
+										<th>Mật khẩu</th>
+										<th>Email</th>
+										<th>Địa chỉ</th>
+										<th>Số điện thoại</th>
+										<th>Quyền</th>
+										<th>Trạng thái</th>
+										<th>Hành động</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each = "u: ${accounts}">
+										<td th:text = "${u.id}"></td>
+										<td th:text = "${u.ten}"></td>
+										<td th:text = "${u.matKhau}"></td>
+										<td th:text = "${u.email}"></td>
+										<td th:text = "${u.diaChi}"></td>
+										<td th:text = "${u.soDienThoai}"></td>
+										<td th:text = "${u.tenQuyen}"></td>
+										<td th:text = "${u.trangThaiHoatDong}"></td>
+										<td>
+											<div class="d-flex justify-content-center align-items-center">
+												<a th:href="@{'/admin/account?editId=' + ${u.id}}"
+												   class="btn btn-outline-warning btn-sm">
+													Sửa
+												</a>
+
+
+												<form class="d-inline-block"
+													  method="post"
+													  th:action="@{/admin/account/delete}"
+													  onsubmit="return confirm('Bạn có chắc chắn muốn xóa không?');">
+													<input type="hidden" th:value="${u.id}" name="id">
+													<button class="btn btn-outline-danger btn-sm" type="submit">Xóa</button>
+												</form>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="card-body row d-none" id="editForm" th:class="${editingAccount != null} ? '' : 'hide'">
+							<h5 class="card-title">Sửa tài khoản</h5>
+							<form th:action="@{/admin/account/edit}" method="POST">
+								<!-- Sửa lại input hidden id -->
+								<input type="hidden" name="id" th:value="${editingAccount.id}">
+
+								<div class="col-12 mb-3">
+									<label for="editName" class="form-label">Tên tài khoản</label>
+									<input type="text" class="form-control" id="editName" name="name" th:value="${editingAccount.ten}" required>
+								</div>
+
+								<div class="col-12 mb-3">
+									<label for="editRole" class="form-label">Chọn quyền</label>
+									<select class="form-select" id="editRole" name="roleIds" required>
+										<option th:each="role : ${roles}"
+												th:value="${role.id}"
+												th:selected="${editingAccount.role.contains(role)}"
+												th:text="${role.ten}">
+										</option>
+									</select>
+								</div>
+
+								<div class="col-12 mb-3">
+									<label class="form-label">Trạng thái hoạt động</label><br>
+									<label>Hoat dong</label>
+									<input type="radio" name="trangThaiHoatDong" value="true"
+										   th:checked="${editingAccount.trangThaiHoatDong != null and editingAccount.trangThaiHoatDong}">
+									<label>Khong hoat dong</label>
+									<input type="radio" name="trangThaiHoatDong" value="false"
+										   th:checked="${editingAccount.trangThaiHoatDong != null and !editingAccount.trangThaiHoatDong}">
+								</div>
+
+								<div class="text-center mt-3">
+									<button type="submit" class="btn btn-primary">Lưu</button>
+									<button type="button" class="btn btn-secondary" onclick="toggleEditForm()">Hủy</button>
+								</div>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<!-- End #main -->
+
+	<!-- Delete Confirmation Modal -->
+	<!--
+	<div class="modal fade" id="confirmDeleteModal1" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					Bạn có chắc chắn muốn xóa tài khoản admin không?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+					<form action="xoaIdNguoiDungAccount" method="POST" style="display: inline;" onsubmit="deleteAccount(event)">
+						<input type="hidden" name="id" value="1">
+						<button type="submit" class="btn btn-danger">Xác nhận xóa</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	-->
+	<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+		<i class="bi bi-arrow-up-short"></i>
+	</a>
+
+	<!-- Vendor JS Files -->
+	<script src="/assetsquantri/vendor/apexcharts/apexcharts.min.js"></script>
+	<script src="/assetsquantri/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/assetsquantri/vendor/chart.js/chart.umd.js"></script>
+	<script src="/assetsquantri/vendor/echarts/echarts.min.js"></script>
+	<script src="/assetsquantri/vendor/quill/quill.js"></script>
+	<script src="/assetsquantri/vendor/simple-datatables/simple-datatables.js"></script>
+	<script src="/assetsquantri/vendor/tinymce/tinymce.min.js"></script>
+	<script src="/assetsquantri/vendor/php-email-form/validate.js"></script>
+
+	<!-- Template Main JS File -->
+	<script src="/assetsquantri/js/main.js"></script>
+	
+	<script>
+
+		function deleteAccount(event) {
+			event.preventDefault();
+			const form = event.target;
+			const id = form.querySelector('input[name="id"]').value;
+			if (id === "1") {
+				return; // Prevent admin account deletion
+			}
+			const formData = new FormData(form);
+			fetch(form.action, {
+				method: 'POST',
+				body: formData
+			}).then(() => {
+				window.location.href = "account.html";
+			});
+		}
+
+		function editAccount(id, ten, roleId, trangThai) {
+    document.getElementById('editId').value = id;
+    document.getElementById('editName').value = ten;
+    document.getElementById('editRole').value = roleId;
+
+    if (trangThai === true || trangThai === 'true') {
+        document.getElementById('trangThaiTrue').checked = true;
+    } else {
+        document.getElementById('trangThaiFalse').checked = true;
+    }
+
+    // Hiện form sửa
+    document.getElementById('editForm').classList.remove('hide', 'd-none');
+}
+
+		form.addEventListener('submit', function(e) {
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const btnText = submitBtn?.textContent?.trim();
+
+            if (btnText === 'Xoá') {
+                e.preventDefault();
+                swal("Thành công!", "Đã xóa thành công.", "success").then(() => {
+                    form.submit(); // ✅ Gửi lại form sau khi thông báo
+                });;
+            }
+        });
+    });
+
+		function handleEditSubmit(event, id, ten) {
+        event.preventDefault();
+        showEditForm(id, ten);
+    }
+
+    document.querySelectorAll("form").forEach(form => {
+             const submitBtn = form.querySelector("button[type='submit']");
+             const btnText = submitBtn?.textContent?.trim();
+             if (btnText === 'Thêm') {
+            e.preventDefault();
+            swal("Thành công!", "Sản phẩm đã được sửa.", "success").then(() => {
+                form.submit(); // ✅ Gửi lại form sau khi thông báo
+            });
+
+    function showEditForm(id, ten) {
+        const form = document.getElementById('editForm');
+        form.classList.remove('d-none');
+
+        document.getElementById('editId').value = id;
+        document.getElementById('editName').value = ten;
+        // Nếu cần, bạn có thể thêm AJAX gọi dữ liệu đầy đủ tại đây
+    }
+
+    function toggleEditForm() {
+        const form = document.getElementById('editForm');
+        form.classList.add('d-none');
+    }
+	</script>
+</body>
+</html>

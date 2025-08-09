@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Admin/Category</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link href="/assetsquantri/img/logo1.png" rel="icon">
+    <link href="/assetsquantri/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="/assetsquantri/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assetsquantri/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assetsquantri/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assetsquantri/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="/assetsquantri/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="/assetsquantri/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="/assetsquantri/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="/assetsquantri/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="bieudo.html" class="logo d-flex align-items-center">
+                <img src="/assetsquantri/img/logo1.png" alt="">
+                <span class="d-none d-lg-block">Admin</span>
+            </a>
+        </div>
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+                <li class="nav-item dropdown pe-3">
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i>
+                        <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6>admin</h6>
+                            <span>Quản trị viên</span>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="Thongtincanhan.html">
+                                <i class="bi bi-person"></i> <span>Thông tin cá nhân</span>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" th:href="@{/logout}">
+                                <i class="bi bi-box-arrow-right"></i> <span>Đăng xuất</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-heading"><strong>Tổng quan dữ liệu</strong></li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{'/admin/bieudo'}">
+                    <i class="fas fa-tachometer-alt"></i> <span>Biểu đồ thống kê</span>
+                </a>
+            </li>
+            <li class="nav-heading"><strong>Quản lý bán hàng</strong></li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" th:href="@{'/admin/category'}">
+                    <i class="bi bi-layout-text-window-reverse"></i> <span>Danh mục</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" th:href="@{'/admin/Donhangquantri'}">
+                    <i class="bi bi-cart"></i> <span>Đơn hàng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" th:href="@{'/admin/productquantri'}">
+                    <i class="bi bi-grid"></i> <span>Sản phẩm</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" th:href="@{'/admin/Quanlidanhgia'}">
+                    <i class="fa fa-star"></i><span>Đánh giá</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" th:href="@{'/admin/Quantrikhuyenmai'}">
+                    <i class="fas fa-gift"></i> <span>Khuyến mãi</span>
+                </a>
+            </li>
+            <li class="nav-heading"><strong>Quản lý tài khoản</strong></li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" th:href="@{'/admin/account'}">
+                    <i class="bi bi-person"></i> <span>Tài khoản</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Danh mục</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Quản lý bán hàng</a></li>
+                    <li class="breadcrumb-item active">Danh mục</li>
+                </ol>
+            </nav>
+        </div>
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title"><b>Quản lý danh mục</b></h3>
+                            <div style="display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-bottom: 10px;">
+                                <p style="margin: 0;">Thêm danh mục phân loại</p>
+                                <button type="button" id="addb" class="btn btn-success">
+                                    <i class="bi bi-plus-lg"></i>
+                                </button>
+                            </div>
+                            <div class="card">
+                                <div class="card-body row hide" id="addf">
+                                    <h5 class="card-title">Thêm danh mục phân loại</h5>
+                                    <form id="form-them-danh-muc" th:action="@{/admin/category/add}" method="post">
+                                        <div class="col-12">
+                                            <label for="inputName" class="form-label">Tên danh mục</label>
+                                            <input type="text" class="form-control" id="inputName" name="ten">
+                                        </div>
+                                        <div class="text-center mt-3">
+                                            <button type="submit" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn thêm sản phẩm không?')">Thêm</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <table class="table datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã số</th>
+                                            <th>Phân loại</th>
+                                            <th>Hành động</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each = "cate : ${categories}">
+                                            <td th:text = "${cate.id}"></td>
+                                            <td th:text = "${cate.ten}"></td>
+                                            <td>
+                                                <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
+                                                    <a th:href="@{'/admin/category?editId=' + ${cate.id}}"
+                                                       class="btn btn-outline-warning btn-sm">
+                                                        Sửa
+                                                    </a>
+                                                    <form class="d-inline-block"
+                                                          method="post"
+                                                          th:action="@{/admin/category/delete}"
+                                                          onsubmit="return confirm('Bạn có chắc chắn muốn xóa không?');">
+                                                        <input type="hidden" th:value="${cate.id}" name="id">
+                                                        <button class="btn btn-outline-danger btn-sm" type="submit">Xóa</button>
+                                                    </form>
+
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overlay -->
+        <div id="smoke" th:class="${editingCategory != null} ? '' : 'hide'" onclick="closeModal(event)"></div>
+
+        <!-- Modal Form -->
+        <div id="editF" th:class="${editingCategory != null} ? '' : 'hide'">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal(event)">&times;</span>
+                <form class="card-body row" th:action="@{'/admin/category/edit'}" method="post">
+                    <input type="hidden" name="id" th:if="${editingCategory != null}" th:value="${editingCategory.id}"/>
+                    <h5 class="card-title">Sửa danh mục</h5>
+                    <label for="editName" class="form-label">Tên danh mục</label>
+                    <input type="text" class="form-control" id="editName" name="ten" th:if="${editingCategory != null}" th:value="${editingCategory.ten}" />
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+    <div id="smoke1" class="smoke hide"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+    <script src="/vendor/sweetalert/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assetsquantri/js/main.js"></script>
+    <script>
+
+     document.addEventListener("DOMContentLoaded", function () {
+         // Toggle form thêm danh mục
+         document.getElementById('addb').addEventListener('click', () => {
+             const addForm = document.getElementById('addf');
+             addForm.classList.toggle('hide');
+         });
+
+
+
+         // Xử lý form sửa
+         document.querySelectorAll("form").forEach(form => {
+             const submitBtn = form.querySelector("button[type='submit']");
+             const btnText = submitBtn?.textContent?.trim();
+             if (btnText === 'Thêm') {
+            e.preventDefault();
+            swal("Thành công!", "Sản phẩm đã được thêm.", "success").then(() => {
+                form.submit(); // ✅ Gửi lại form sau khi thông báo
+            });
+            // Không nên gọi toggleUpload() ở đây vì form sẽ bị reload
+           } else if (btnText === "Lưu thay đổi") {
+                 form.addEventListener("submit", function(e) {
+                     e.preventDefault();
+                     swal("Thành công!", "Danh mục đã được cập nhật.", "success")
+                         .then(() => form.submit());
+                 });
+             }
+
+             // Loại bỏ xử lý SweetAlert cho nút Xóa – đã có confirm inline
+         });
+
+
+
+         // Đóng modal
+         document.getElementById('smoke')?.addEventListener('click', closeModal);
+     });
+
+     function closeModal(event) {
+         const editF = document.getElementById('editF');
+         const smoke = document.getElementById('smoke');
+         if (!event || event.target === smoke || event.target.classList.contains('close-btn')) {
+             editF?.classList.add('hide');
+             smoke?.classList.add('hide');
+         }
+     }
+    </script>
+
+
+</body>
+</html>

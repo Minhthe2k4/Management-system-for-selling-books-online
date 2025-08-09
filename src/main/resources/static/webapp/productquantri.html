@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Admin/Product</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <!-- Favicons -->
+    <link href="assetsquantri/img/logo1.png" rel="icon">
+    <link href="assetsquantri/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="assetsquantri/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assetsquantri/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assetsquantri/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assetsquantri/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="assetsquantri/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="assetsquantri/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assetsquantri/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Template Main CSS File -->
+    <link href="assetsquantri/css/style.css" rel="stylesheet">
+    <style>
+        #smoke {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        #editF {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            border-radius: 8px;
+        }
+        .hide {
+            display: none;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="logo d-flex align-items-center">
+                <a href="dashboard.html" class="d-flex align-items-center">
+                    <img src="assetsquantri/img/logo1.png" alt="">
+                    <span class="d-none d-lg-block">Admin</span>
+                </a>
+            </div>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div>
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+                <li class="nav-item dropdown pe-3">
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i>
+                        <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6>admin</h6>
+                            <span>Quản trị viên</span>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="Thongtincanhan.html">
+                                <i class="bi bi-person"></i><span>Thông tin cá nhân</span>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="login.html">
+                                <i class="bi bi-box-arrow-right"></i><span>Đăng xuất</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-heading"><strong>Tổng quan dữ liệu</strong></li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="bieudo.html">
+                    <i class="fas fa-tachometer-alt"></i><span>Biểu đồ thống kê</span>
+                </a>
+            </li>
+            <li class="nav-heading"><strong>Quản lý bán hàng</strong></li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="category.html">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>Danh mục</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Donhangquantri.html">
+                    <i class="bi bi-cart"></i><span>Đơn hàng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="productquantri.html">
+                    <i class="bi bi-grid"></i><span>Sản phẩm</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Quanlidanhgia.html">
+                    <i class="fa fa-star"></i><span>Đánh giá</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Quantrikhuyenmai.html">
+                    <i class="fas fa-gift"></i><span>Khuyến mãi</span>
+                </a>
+            </li>
+            <li class="nav-heading"><strong>Quản lý tài khoản</strong></li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="account.html">
+                    <i class="bi bi-person"></i><span>Tài khoản</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <!-- Main Content -->
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Sản phẩm</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="dashboard.html">Quản lý bán hàng</a></li>
+                    <li class="breadcrumb-item active">Sản phẩm</li>
+                </ol>
+            </nav>
+        </div>
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title"><b>Quản lý sản phẩm</b></h3>
+                            <div style="display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-bottom: 10px;">
+                                <p style="margin: 0;">Thêm sản phẩm</p>
+                                <button type="button" id="addb" class="btn btn-success">
+                                    <i class="bi bi-plus-lg"></i>
+                                </button>
+                            </div>
+                            <div class="card">
+                                <div class="card-body row hide" id="addf">
+                                    <h5 class="card-title">Thêm sản phẩm</h5>
+                                    <form>
+                                        <div class="col-12">
+                                            <label for="inputName" class="form-label">Tên sản phẩm</label>
+                                            <input type="text" class="form-control" id="inputName" placeholder="Tên sản phẩm" name="addTensanpham">
+                                            <label for="categorySelect" class="form-label">Chọn danh mục của sản phẩm</label>
+                                            <select class="form-select" id="categorySelect" name="addDanhmucsanpham">
+                                                <option selected>Chọn danh mục</option>
+                                                <option value="1">Sách giáo khoa</option>
+                                                <option value="2">Sách thiếu nhi</option>
+                                                <option value="3">Truyện cổ tích</option>
+                                                <option value="4">Truyện dân gian</option>
+                                            </select>
+                                            <label for="inputPrice" class="form-label">Đơn giá</label>
+                                            <input type="number" class="form-control" id="inputPrice" placeholder="Đơn vị: $" name="idGiasanpham" min="0" step="0.1">
+                                            <label for="inputImg">Ảnh:</label><br>
+                                            <input type="file" id="inputImg" name="image" accept="image/*" required><br>
+                                            <label for="inputDetail" class="form-label">Mô tả</label>
+                                            <input class="form-control" id="inputDetail" placeholder="Mô tả sản phẩm" name="addMota">
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn thêm sản phẩm không?')">Thêm</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th>Mã SP</th>
+                                    <th>Tên SP</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Số lượng</th>
+                                    <th>Phân loại</th>
+                                    <th>Giá</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Sách Giáo Khoa Lớp 10</td>
+                                    <td><img src="images/sachgiaokhoa.jpg" alt="Sách Giáo Khoa Lớp 10" style="width: 100px; height: auto;" loading="lazy"></td>
+                                    <td>50</td>
+                                    <td>Sách giáo khoa</td>
+                                    <td>100000đ</td>
+                                    <td>
+                                        <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
+                                            <button type="button" class="btn btn-outline-warning btn-sm" data-id="1" onclick="editForm(this)">Sửa</button>
+                                            <form class="d-inline-block" onsubmit="return confirm('Bạn có chắc chắn muốn xóa không?');">
+                                                <input type="hidden" value="1" name="id">
+                                                <button class="btn btn-outline-danger btn-sm" type="submit">Xoá</button>
+                                            </form>
+                                            <form class="d-inline-block" action="test.html" method="GET">
+                                                <input type="hidden" value="1" name="idd">
+                                                <button type="submit" class="btn btn-outline-info btn-sm">Chi tiết</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Truyện Dân Gian Việt Nam</td>
+                                    <td><img src="images/sachdangian.jpg" alt="Truyện Dân Gian Việt Nam" style="width: 100px; height: auto;" loading="lazy"></td>
+                                    <td>30</td>
+                                    <td>Truyện dân gian</td>
+                                    <td>50000đ</td>
+                                    <td>
+                                        <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
+                                            <button type="button" class="btn btn-outline-warning btn-sm" data-id="2" onclick="editForm(this)">Sửa</button>
+                                            <form class="d-inline-block" onsubmit="return confirm('Bạn có chắc chắn muốn xóa không?');">
+                                                <input type="hidden" value="2" name="id">
+                                                <button class="btn btn-outline-danger btn-sm" type="submit">Xoá</button>
+                                            </form>
+                                            <form class="d-inline-block" action="test.html" method="GET">
+                                                <input type="hidden" value="2" name="idd">
+                                                <button type="submit" class="btn btn-outline-info btn-sm">Chi tiết</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="smoke" class="hide" onclick="closeModal(event)"></div>
+        <div id="editF" class="hide">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">×</span>
+                <form class="card-body row" id="editProductForm">
+                    <input type="hidden" id="product-id" name="product-id" readonly>
+                    <h5 class="card-title">Sửa sản phẩm</h5>
+                    <label for="editName" class="form-label">Tên sản phẩm</label>
+                    <input type="text" class="form-control" id="editName" name="name" placeholder="Tên sản phẩm">
+                    <label for="editCategory" class="form-label">Chọn danh mục của sản phẩm</label>
+                    <select class="form-select" id="editCategory" name="category">
+                        <option selected>Chọn danh mục...</option>
+                        <option value="1">Sách giáo khoa</option>
+                        <option value="2">Sách thiếu nhi</option>
+                        <option value="3">Truyện cổ tích</option>
+                        <option value="4">Truyện dân gian</option>
+                    </select>
+                    <label for="editPrice" class="form-label">Đơn giá</label>
+                    <input type="number" class="form-control" id="editPrice" name="price" placeholder="Đơn vị: $">
+                    <label for="editImg" class="form-label">Ảnh:</label><br>
+                    <input type="file" id="editImg" name="image" accept="image/*" required>
+                    <label for="editDetail" class="form-label">Mô tả</label>
+                    <textarea class="form-control" id="editDetail" name="description" placeholder="Mô tả sản phẩm"></textarea>
+                    <button type="submit" id="cuppha" class="btn btn-primary">Sửa</button>
+                </form>
+            </div>
+        </div>
+        <div class="card editForm hide" style="z-index: 2222" id="editS">
+            <div class="card-body row">
+                <h5 class="card-title">Sửa kiểu</h5>
+                <form>
+                    <label for="editColor" class="form-label">Ngôn ngữ</label>
+                    <input type="text" class="form-control" id="editColor" placeholder="Ngôn ngữ">
+                    <label for="editSize" class="form-label">Nhà xuất bản</label>
+                    <select class="form-select" id="editSize">
+                        <option selected>Chọn nhà xuất bản...</option>
+                        <option value="NXB Giáo dục">NXB Giáo dục</option>
+                        <option value="NXB Kim Đồng">NXB Kim Đồng</option>
+                    </select>
+                    <label for="editQuantity" class="form-label">Số lượng</label>
+                    <input type="number" class="form-control" id="editQuantity" placeholder="Số lượng">
+                    <button type="submit" class="btn btn-primary">Sửa</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <div id="smoke2" class="smoke hide" style="z-index: 2221"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="assetsquantri/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="assetsquantri/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assetsquantri/vendor/chart.js/chart.umd.js"></script>
+    <script src="assetsquantri/vendor/echarts/echarts.min.js"></script>
+    <script src="assetsquantri/vendor/quill/quill.js"></script>
+    <script src="assetsquantri/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="assetsquantri/vendor/tinymce/tinymce.min.js"></script>
+    <script src="assetsquantri/vendor/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="assetsquantri/js/main.js"></script>
+    <script src="vendor/sweetalert/sweetalert.min.js"></script>
+    <script>
+        document.getElementById('addb').addEventListener('click', toggleUpload);
+        function toggleUpload() {
+            const addForm = document.getElementById('addf');
+            addForm.classList.toggle('hide');
+        }
+        function editForm(button) {
+            const editF = document.getElementById('editF');
+            const smoke = document.getElementById('smoke');
+            const productIdInput = document.getElementById('product-id');
+            const productId = button.getAttribute('data-id');
+            productIdInput.value = productId;
+            editF.classList.remove('hide');
+            smoke.classList.remove('hide');
+        }
+        function closeModal(event) {
+            const editF = document.getElementById('editF');
+            const smoke = document.getElementById('smoke');
+            const editS = document.getElementById('editS');
+            const smoke2 = document.getElementById('smoke2');
+            if (!event || event.target === smoke || event.target === smoke2 || event.target.classList.contains('close-btn')) {
+                editF.classList.add('hide');
+                smoke.classList.add('hide');
+                editS.classList.add('hide');
+                smoke2.classList.add('hide');
+            }
+        }
+        function handleSave(event) {
+            event.preventDefault();
+            swal("Thành công!", "Sản phẩm đã được sửa.", "success");
+            closeModal();
+        }
+        function editsForm() {
+            const editS = document.getElementById('editS');
+            const smoke2 = document.getElementById('smoke2');
+            editS.classList.remove('hide');
+            smoke2.classList.remove('hide');
+        }
+        document.getElementById('smoke').addEventListener('click', closeModal);
+        document.getElementById('smoke2').addEventListener('click', closeModal);
+        document.querySelectorAll('.editProductForm').forEach(form => {
+            form.addEventListener('submit', handleSave);
+        });
+        document.querySelectorAll('.editForm form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                swal("Thành công!", "Chi tiết sản phẩm đã được sửa.", "success");
+                closeModal();
+            });
+        });
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                if (e.target.querySelector('button[type="submit"]').textContent === 'Thêm') {
+                    e.preventDefault();
+                    swal("Thành công!", "Sản phẩm đã được thêm.", "success");
+                    toggleUpload();
+                } else if (e.target.querySelector('button[type="submit"]').textContent === 'Xoá') {
+                    e.preventDefault();
+                    swal("Thành công!", "Đã xóa thành công.", "success");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

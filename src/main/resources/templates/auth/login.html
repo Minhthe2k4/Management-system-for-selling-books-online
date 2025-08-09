@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Đăng nhập</title>
+    <link rel="stylesheet" href="/cssdangnhap/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="auth-wrapper">
+    <div class="auth-container">
+        <div class="auth-action-left">
+            <div class="auth-form-outer" style="margin-top: 100px;">
+                <h2 class="auth-form-title">Đăng nhập</h2>
+
+                <div th:if="${param.error}" class="alert alert-danger" style="color: red; margin-top: 10px; text-align: center;">
+                    Email hoặc mật khẩu không đúng.
+                </div>
+                <div th:if="${param.logout}" class="alert alert-success" style="color: green; margin-top: 10px; text-align: center;">
+                    Bạn đã đăng xuất thành công.
+                </div>
+
+                <form th:action="@{/perform_login}" method="post" class="login-form">
+                    <input type="email" class="auth-form-input" placeholder="Email đăng nhập" name="email" required>
+                    <div class="input-icon">
+                        <input type="password" class="auth-form-input" placeholder="Mật khẩu" name="password" required minlength="6">
+                        <i class="fa fa-eye show-password" aria-label="Hiển thị mật khẩu"></i>
+                    </div>
+                    <label class="btn active" for="rememberMeCheckbox">
+                        <input type="checkbox" name="remember-me" id="rememberMeCheckbox">
+                        <i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>
+                        <span> Lưu mật khẩu</span>
+                    </label>
+                    <div class="footer-action">
+                        <input type="submit" value="Đăng nhập" class="auth-submit">
+                        <a href="/register" class="auth-btn-direct">Đăng ký</a>
+                    </div>
+                </form>
+                <div class="auth-forgot-password">
+                    <a href="#">Quên mật khẩu</a>
+                </div>
+                <div class="auth-external-container"></div>
+                <div class="auth-external-list">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-google"></i></a></li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="auth-action-right">
+            <div class="auth-image">
+                <img src="/assetsdangnhap/vector.png" alt="login illustration">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/vendor/sweetalert/sweetalert.min.js"></script>
+<script src="/jsdangnhap/common.js"></script>
+</body>
+</html>

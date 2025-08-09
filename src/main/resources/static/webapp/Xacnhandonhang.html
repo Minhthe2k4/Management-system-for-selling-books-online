@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <link rel="icon" type="image/png" href="images/icons/logo1.png"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác Nhận Đơn Hàng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 36px;
+            color: #333;
+        }
+        .order-date {
+            background-color: #e7f4e4;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .order-date p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2ecc71;
+            margin: 0;
+        }
+        .order-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #fafafa;
+            border-radius: 8px;
+        }
+        .order-item span {
+            font-size: 18px;
+        }
+        .order-item .price {
+            font-weight: bold;
+            color: #333;
+        }
+        .order-item .original-price {
+            text-decoration: line-through;
+            color: #999;
+        }
+        .total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+        .total .final-price {
+            color: #e74c3c;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .button {
+            flex: 1;
+            padding: 15px;
+            color: white;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .confirm-button {
+            background-color: #2ecc71;
+        }
+        .confirm-button:hover {
+            background-color: #27ae60;
+        }
+        .cancel-button {
+            background-color: #e74c3c;
+        }
+        .cancel-button:hover {
+            background-color: #c0392b;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 14px;
+            color: #777;
+        }
+        .footer a {
+            color: #2ecc71;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Xác Nhận Đơn Hàng</h1>
+    </div>
+    <div class="order-date">
+        <p><strong>Ngày Đặt Hàng: 2025-05-01</strong></p>
+    </div>
+    <div class="order-summary">
+        <div class="order-item">
+            <span>Sách Giáo Khoa Lớp 10</span>
+            <span class="price original-price">300000₫</span>
+        </div>
+        <div class="order-item">
+            <span>Giảm giá (10%)</span>
+            <span class="price">30000₫</span>
+        </div>
+    </div>
+    <div class="total">
+        <span>Tổng cộng</span>
+        <span class="final-price">270000₫</span>
+    </div>
+    <div class="button-group">
+        <button class="button confirm-button" onclick="confirmOrder()">Xác Nhận Đơn Hàng</button>
+        <button class="button cancel-button" onclick="cancelOrder()">Hủy</button>
+    </div>
+</div>
+<div class="footer">
+    <p>© 2025 <a href="#">Cửa Hàng Online</a>. Tất cả các quyền được bảo lưu.</p>
+</div>
+<script src="vendor/sweetalert/sweetalert.min.js"></script>
+<script>
+    function confirmOrder() {
+        swal("Thành công!", "Đơn hàng của bạn đã được xác nhận thành công!", "success");
+    }
+    function cancelOrder() {
+        swal({
+            title: "Bạn có chắc chắn?",
+            text: "Bạn muốn hủy đơn hàng này chứ?",
+            icon: "warning",
+            buttons: ["Không", "Có"],
+            dangerMode: true,
+        }).then((willCancel) => {
+            if (willCancel) {
+                swal("Thành công!", "Đơn hàng đã được hủy.", "success").then(() => {
+                    window.location.href = "product-detail.html";
+                });
+            }
+        });
+    }
+</script>
+</body>
+</html>

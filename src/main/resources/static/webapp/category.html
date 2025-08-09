@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Admin/Category</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link href="assetsquantri/img/logo1.png" rel="icon">
+    <link href="assetsquantri/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="assetsquantri/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assetsquantri/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assetsquantri/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assetsquantri/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="assetsquantri/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="assetsquantri/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assetsquantri/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="assetsquantri/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="bieudo.html" class="logo d-flex align-items-center">
+                <img src="assetsquantri/img/logo1.png" alt="">
+                <span class="d-none d-lg-block">Admin</span>
+            </a>
+        </div>
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+                <li class="nav-item dropdown pe-3">
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i>
+                        <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6>admin</h6>
+                            <span>Quản trị viên</span>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="Thongtincanhan.html">
+                                <i class="bi bi-person"></i> <span>Thông tin cá nhân</span>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="login.html">
+                                <i class="bi bi-box-arrow-right"></i> <span>Đăng xuất</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-heading"><strong>Tổng quan dữ liệu</strong></li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="bieudo.html">
+                    <i class="fas fa-tachometer-alt"></i> <span>Biểu đồ thống kê</span>
+                </a>
+            </li>
+            <li class="nav-heading"><strong>Quản lý bán hàng</strong></li>
+            <li class="nav-item">
+                <a class="nav-link" href="category.html">
+                    <i class="bi bi-layout-text-window-reverse"></i> <span>Danh mục</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Donhangquantri.html">
+                    <i class="bi bi-cart"></i> <span>Đơn hàng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="productquantri.html">
+                    <i class="bi bi-grid"></i> <span>Sản phẩm</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Quanlidanhgia.html">
+                    <i class="fa fa-star"></i> <span>Đánh giá</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Quantrikhuyenmai.html">
+                    <i class="fas fa-gift"></i> <span>Khuyến mãi</span>
+                </a>
+            </li>
+            <li class="nav-heading"><strong>Quản lý tài khoản</strong></li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="account.html">
+                    <i class="bi bi-person"></i> <span>Tài khoản</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Danh mục</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Quản lý bán hàng</a></li>
+                    <li class="breadcrumb-item active">Danh mục</li>
+                </ol>
+            </nav>
+        </div>
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title"><b>Quản lý danh mục</b></h3>
+                            <div style="display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-bottom: 10px;">
+                                <p style="margin: 0;">Thêm danh mục phân loại</p>
+                                <button type="button" id="addb" class="btn btn-success">
+                                    <i class="bi bi-plus-lg"></i>
+                                </button>
+                            </div>
+                            <div class="card">
+                                <div class="card-body row hide" id="addf">
+                                    <h5 class="card-title">Thêm danh mục phân loại</h5>
+                                    <form id="form-them-danh-muc">
+                                        <div class="col-12">
+                                            <label for="inputName" class="form-label">Tên danh mục</label>
+                                            <input type="text" class="form-control" id="inputName" name="addThemSanPham">
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary">Thêm</button>
+                                        </div>
+                                    </form>
+                                    <div class="search-container" style="padding: 20px;">
+                                        <input type="text" id="search-input" class="form-control" placeholder="Tìm kiếm danh mục..." />
+                                    </div>
+                                </div>
+                                <table class="table datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã số</th>
+                                            <th>Phân loại</th>
+                                            <th class="small-column">Số lượng sản phẩm</th>
+                                            <th>Hành động</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Category A</td>
+                                            <td class="small-column">10</td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-warning btn-sm" data-id="1" onclick="editForm(this)">Sửa</button>
+                                                <button class="btn btn-outline-danger btn-sm" onclick="confirmDelete(1)">Xoá</button>
+                                                <a href="Chitietdanhmuc.html?id=1" class="btn btn-outline-info btn-sm">Chi tiết</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Category B</td>
+                                            <td class="small-column">15</td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-warning btn-sm" data-id="2" onclick="editForm(this)">Sửa</button>
+                                                <button class="btn btn-outline-danger btn-sm" onclick="confirmDelete(2)">Xoá</button>
+                                                <a href="Chitietdanhmuc.html?id=2" class="btn btn-outline-info btn-sm">Chi tiết</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="card editForm hide" id="editF">
+            <div class="card-body row">
+                <h5 class="card-title">Sửa danh mục</h5>
+                <form id="form-sua-danh-muc">
+                    <input type="hidden" id="product-id" name="product-id" readonly>
+                    <div class="col-12">
+                        <label for="inputUpdate" class="form-label">Tên danh mục mới</label>
+                        <input type="text" class="form-control" id="inputUpdate" name="updateDanhMuc">
+                    </div>
+                    <div id="edit-error-msg" class="text-danger"></div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Sửa</button>
+                        <button type="button" class="btn btn-secondary" id="cancelBtn">Hủy</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <div id="smoke" class="smoke hide"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+    <script src="vendor/sweetalert/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assetsquantri/js/main.js"></script>
+    <script>
+        document.getElementById('addb').addEventListener('click', () => {
+            toggleUpload();
+        });
+        function toggleUpload() {
+            const addForm = document.getElementById('addf');
+            if (addForm.classList.contains('hide')) {
+                addForm.classList.remove('hide');
+            } else {
+                addForm.classList.add('hide');
+            }
+        }
+        function editForm(button) {
+            const editF = document.getElementById('editF');
+            const smoke = document.getElementById('smoke');
+            const productIdInput = document.getElementById('product-id');
+            const productId = button.getAttribute('data-id') || '1';
+            if (productIdInput) {
+                productIdInput.value = productId;
+            }
+            if (editF.classList.contains('hide')) {
+                editF.classList.remove('hide');
+                smoke.classList.remove('hide');
+            }
+        }
+        document.getElementById('smoke').addEventListener('click', function() {
+            document.getElementById('smoke').classList.add('hide');
+            document.getElementById('editF').classList.add('hide');
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("form-them-danh-muc");
+            const input = document.getElementById("inputName");
+            if (!form || !input) return;
+            function xuLyThemDanhMuc() {
+                const tenDanhMuc = input.value.trim();
+                if (!tenDanhMuc) {
+                    swal("Lỗi!", "Tên danh mục không được để trống!", "error");
+                    return;
+                }
+                swal("Thành công!", "Thêm danh mục: " + tenDanhMuc, "success");
+            }
+            input.addEventListener("keydown", function(e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    xuLyThemDanhMuc();
+                }
+            });
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
+                xuLyThemDanhMuc();
+            });
+        });
+        function confirmDelete(id) {
+            swal({
+                title: "Bạn có chắc chắn?",
+                text: "Bạn muốn xóa danh mục này chứ?",
+                icon: "warning",
+                buttons: ["Không", "Có"],
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    swal("Thành công!", "Danh mục ID: " + id + " đã được xóa.", "success");
+                }
+            });
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("form-sua-danh-muc");
+            const input = document.getElementById("inputUpdate");
+            const msgBox = document.getElementById("edit-error-msg");
+            if (!form || !input) return;
+            function xuLySuaDanhMuc() {
+                const tenDanhMuc = input.value.trim();
+                if (!tenDanhMuc) {
+                    msgBox.textContent = "Tên danh mục không được để trống!";
+                    return;
+                }
+                swal("Thành công!", "Sửa danh mục: " + tenDanhMuc, "success");
+            }
+            input.addEventListener("keydown", function(e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    xuLySuaDanhMuc();
+                }
+            });
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
+                xuLySuaDanhMuc();
+            });
+            document.getElementById("cancelBtn").addEventListener("click", function() {
+                const editForm = document.getElementById('editF');
+                const smoke = document.getElementById('smoke');
+                if (editForm) {
+                    editForm.classList.add('hide');
+                }
+                if (smoke) {
+                    smoke.classList.add('hide');
+                }
+                form.reset();
+                msgBox.textContent = '';
+            });
+        });
+        document.getElementById('search-input').addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('table.datatable tbody tr');
+            rows.forEach(row => {
+                const columns = row.querySelectorAll('td');
+                let matchFound = false;
+                columns.forEach(column => {
+                    if (column.textContent.toLowerCase().includes(filter)) {
+                        matchFound = true;
+                    }
+                });
+                if (matchFound) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

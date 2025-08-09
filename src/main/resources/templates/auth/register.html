@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký</title>
+    <link rel="stylesheet" href="/cssdangnhap/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="auth-wrapper">
+    <div class="auth-container">
+        <div class="auth-action-left">
+            <div class="auth-form-outer">
+                <h2 class="auth-form-title">Tạo tài khoản</h2>
+
+                <div th:if="${error}" class="alert alert-danger" style="color: red; margin-top: 10px; text-align: center;">
+                    <span th:text="${error}"></span>
+                </div>
+                <div th:if="${success}" class="alert alert-success" style="color: green; margin-top: 10px; text-align: center;">
+                    <span th:text="${success}"></span>
+                </div>
+
+                <form class="login-form" id="registerForm" method="post" th:action="@{/register}" th:object="${userDto}">
+                    <input type="text" class="auth-form-input" placeholder="Họ" th:field="*{ho}" required>
+                    <input type="text" class="auth-form-input" placeholder="Tên" th:field="*{ten}" required>
+                    <input type="email" class="auth-form-input" placeholder="Email" th:field="*{email}" required>
+
+                    <div class="input-icon">
+                        <input type="password" class="auth-form-input" placeholder="Mật khẩu" th:field="*{matKhau}" required minlength="6">
+                        <i class="fa fa-eye show-password" aria-label="Hiển thị mật khẩu"></i>
+                    </div>
+                    <div class="input-icon" style="margin-top: 10px;">
+                        <input type="password" class="auth-form-input" placeholder="Xác nhận mật khẩu" th:field="*{confirmMatKhau}" required minlength="6">
+                        <i class="fa fa-eye show-password" aria-label="Hiển thị mật khẩu xác nhận"></i>
+                    </div>
+
+                    <input type="text" class="auth-form-input" placeholder="Địa chỉ" th:field="*{diaChi}" required>
+                    <input type="tel" class="auth-form-input" placeholder="Số điện thoại" th:field="*{soDienThoai}" required pattern="[0-9]{10,11}">
+
+                    <label class="btn active" for="acceptTermsCheckbox">
+                        <input type="checkbox" id="acceptTermsCheckbox" th:field="*{acceptTerms}">
+                        <i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>
+                        <span> Tôi đồng ý với <a href="#">Điều khoản</a> và <a href="#">Chính sách</a>.</span>
+                    </label>
+
+                    <div class="footer-action">
+                        <input type="submit" value="Đăng ký" class="auth-submit">
+                        <a href="/login" class="auth-btn-direct">Đăng nhập</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="auth-action-right">
+            <div class="auth-image">
+                <img src="/assetsdangnhap/vector.png" alt="Đăng ký tài khoản">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/vendor/sweetalert/sweetalert.min.js"></script>
+<script src="/jsdangnhap/common.js"></script>
+<script>
+    // Handle show/hide password for all inputs with .show-password icon
+    document.querySelectorAll('.show-password').forEach(function(icon) {
+        icon.addEventListener('click', function() {
+            const passwordInput = this.previousElementSibling;
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            }
+        });
+    });
+
+    // Validate terms acceptance and password match before form submission
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+        // Cú pháp truy cập trường form với th:field vẫn dùng name mặc định của Thymeleaf
+        const acceptTermsCheckbox = document.getElementById('acceptTermsCheckbox');
+        const passwordInput = document.querySelector('input[name="matKhau"]'); // Lấy theo name Thymeleaf tạo ra
+        const confirmPasswordInput = document.querySelector('input[name="confirmMatKhau"]'); // Lấy theo name Thymeleaf tạo ra
+
+        if (!acceptTermsCheckbox.checked) {
+            e.preventDefault();
+            swal("Lỗi!", "Bạn phải đồng ý với điều khoản dịch vụ và chính sách bảo mật để đăng ký!", "warning");
+            return;
+        }
+
+        // Đảm bảo các biến này không null trước khi so sánh
+        if (passwordInput && confirmPasswordInput && passwordInput.value !== confirmPasswordInput.value) {
+            e.preventDefault();
+            swal("Lỗi!", "Mật khẩu và xác nhận mật khẩu không khớp!", "error");
+            passwordInput.value = '';
+            confirmPasswordInput.value = '';
+            return;
+        }
+    });
+</script>
+</body>
+</html>

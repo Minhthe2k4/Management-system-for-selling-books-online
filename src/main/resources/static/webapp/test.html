@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .product {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .product-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        .variants {
+            margin-bottom: 40px;
+        }
+
+        .variant {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .variant:hover {
+            background-color: #f1f1f1;
+        }
+
+        .color-box {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .purple {
+            background-color: purple;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .variant-details {
+            font-size: 1.4rem;
+            color: #555;
+        }
+
+        .size, .quantity {
+            font-size: 1.3rem;
+            color: #777;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 20px;
+        }
+
+        .edit, .delete, .save {
+            width: 60px;
+            height: 38px;
+            padding: 8px 12px;
+            font-size: 1.3rem;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .edit {
+            background-color: #4CAF50;
+        }
+
+        .edit:hover {
+            background-color: #45a049;
+        }
+
+        .delete {
+            background-color: #f44336;
+        }
+
+        .delete:hover {
+            background-color: #e53935;
+        }
+
+        .save {
+            background-color: #008CBA;
+        }
+
+        .save:hover {
+            background-color: #007B9E;
+        }
+
+        .input-field {
+            display: none;
+        }
+
+        .product-price {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #4CAF50;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .back-button img {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+
+        #addVariantBtn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background 0.3s ease;
+        }
+
+        #addVariantBtn img {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        #addVariantBtn:hover {
+            background-color: #007B9E;
+        }
+
+        .cachnhau {
+            margin-bottom: 150px;
+        }
+
+        #addVariantForm {
+            display: none;
+            background-color: #fff;
+            padding: 30px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        #addVariantForm h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #addVariantForm input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        #addVariantForm button {
+            width: 48%;
+            padding: 12px;
+            margin: 10px 1%;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #addVariantForm button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #addVariantForm button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #addVariantForm button[type="button"] {
+            background-color: #f44336;
+            color: white;
+        }
+
+        #addVariantForm button[type="button"]:hover {
+            background-color: #e53935;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        #addVariantForm.fade-out {
+            animation: fadeOut 0.5s ease-out;
+        }
+
+        .cangiua {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .styled-select {
+            width: 200px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .styled-select:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        }
+
+        form label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        form input, .styled-select {
+            margin-bottom: 15px;
+        }
+
+        .quantity-input {
+            width: 100px;
+            height: 30px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cachnhau" id="addVariantForm">
+        <h3>Thêm Variant Mới</h3>
+        <form>
+            <input type="hidden" value="1" name="id">
+            <label for="color">Ngôn ngữ:</label>
+            <input type="text" id="color" name="color" placeholder="Nhập ngôn ngữ" required><br><br>
+            <label for="size">Nhà xuất bản:</label><br>
+            <select id="size" required class="styled-select" name="addNhaXuatBan">
+                <option value="">Chọn Nhà xuất bản</option>
+                <option value="NXB Kim Đồng">NXB Kim Đồng</option>
+                <option value="NXB Tuổi Trẻ">NXB Tuổi Trẻ</option>
+            </select><br><br>
+            <label for="quantity">Số lượng:</label>
+            <input type="number" id="quantity" name="adSoluong" placeholder="Nhập số lượng" required min="0"><br><br>
+            <button type="submit" class="btn btn-primary" onclick="cancelAddVariant()">Lưu</button>
+            <button type="button" class="btn btn-secondary" onclick="cancelAddVariant()">Hủy</button>
+        </form>
+    </div>
+
+    <div class="product">
+        <div class="button-container">
+            <a href="productquantri.html" class="back-button">
+                <img src="https://img.icons8.com/ios/452/left.png" alt="Quay lại"> Quay lại
+            </a>
+            <button id="addVariantBtn" class="btn btn-success">
+                <img src="https://img.icons8.com/ios/452/plus.png" alt="Thêm"> Thêm
+            </button>
+        </div>
+        
+        <h1 class="product-title">Sách giáo khoa toán</h1>
+        <div class="cangiua">
+            <img src="images/nauan.jpg" alt="Áo thun nam" class="product-image">
+        </div>
+        
+        <div class="variants">
+            <div class="variant">
+                <div class="variant-details">
+                    <span style="margin-top: 10px; font-size: 1.3rem; color: #777">Ngôn ngữ: English</span>
+                    <div class="size">Nhà xuất bản: <span class="size-value">NXB Kim Đồng</span></div>
+                    <div class="quantity">Số lượng: 20</div>
+                </div>
+                <div class="actions">
+                    <button class="edit" onclick="editVariant(this)">Sửa</button>
+                    <form action="Xoachitietproductquantri" method="POST" class="d-inline" onsubmit="return confirm('Bạn có chắc chắn muốn xóa không?');">
+                        <input type="hidden" name="id" value="406">
+                        <button class="delete" type="submit">Xóa</button>
+                    </form>
+                    <form class="input-field" >
+                        <input type="number" class="quantity-input" placeholder="Số lượng" name="soluong" value="20">
+                        <input type="hidden" name="id" value="406">
+                        <button class="save" type="submit">Lưu</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="variants">
+            <div class="variant">
+                <div class="variant-details">
+                    <span style="margin-top: 10px; font-size: 1.3rem; color: #777">Ngôn ngữ: đen</span>
+                    <div class="size">Nhà xuất bản: <span class="size-value">NXB Tuổi Trẻ</span></div>
+                    <div class="quantity">Số lượng: 32423</div>
+                </div>
+                <div class="actions">
+                    <button class="edit" onclick="editVariant(this)">Sửa</button>
+                    <form action="Xoachitietproductquantri" method="POST" class="d-inline" onsubmit="return confirm('Bạn có chắc chắn muốn xóa không?');">
+                        <input type="hidden" name="id" value="417">
+                        <button class="delete" type="submit">Xóa</button>
+                    </form>
+                    <form class="input-field" action="SuachitietsanphamproductQT" method="POST">
+                        <input type="number" class="quantity-input" placeholder="Số lượng" name="soluong" value="32423">
+                        <input type="hidden" name="id" value="417">
+                        <button class="save" type="submit">Lưu</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-price">
+            <p>Giá: 23423.0</p>
+        </div>
+    </div>
+
+    <script>
+        function editVariant(button) {
+            const variant = button.closest('.variant');
+            const inputField = variant.querySelector('.input-field');
+            inputField.style.display = 'block';
+
+            const color = variant.querySelector('.color-box').style.backgroundColor;
+            const size = variant.querySelector('.size-value').textContent;
+            const quantity = variant.querySelector('.quantity').textContent.split(": ")[1];
+
+            variant.querySelector('.color-input').value = color;
+            variant.querySelector('.size-input').value = size;
+            variant.querySelector('.quantity-input').value = quantity;
+        }
+
+        function saveChanges(button) {
+            const variant = button.closest('.variant');
+            const colorInput = variant.querySelector('.color-input').value;
+            const sizeInput = variant.querySelector('.size-input').value;
+            const quantityInput = variant.querySelector('.quantity-input').value;
+
+            variant.querySelector('.color-box').style.backgroundColor = colorInput;
+            variant.querySelector('.size-value').textContent = sizeInput;
+            variant.querySelector('.quantity').textContent = `Số lượng: `;
+
+            const inputField = variant.querySelector('.input-field');
+            inputField.style.display = 'none';
+        }
+
+        document.getElementById('addVariantBtn').addEventListener('click', function() {
+            var addVariantForm = document.getElementById('addVariantForm');
+            addVariantForm.style.display = 'block';
+            addVariantForm.classList.remove('fade-out');
+            addVariantForm.classList.add('fade-in');
+        });
+
+        function cancelAddVariant() {
+            var addVariantForm = document.getElementById('addVariantForm');
+            addVariantForm.classList.add('fade-out');
+            setTimeout(function() {
+                addVariantForm.style.display = 'none';
+                addVariantForm.classList.remove('fade-out');
+            }, 500);
+        }
+    </script>
+</body>
+</html>
